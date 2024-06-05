@@ -23,6 +23,11 @@ Shader "URP Shader/Gerstner Waves" {
         _Wave11 ("Wave 11 Wavelength, Steepness, Direction", Vector) = (10, 0.15, 1, 1)
         _Wave12 ("Wave 12 Wavelength, Steepness, Direction", Vector) = (10, 0.15, 1, 1)
 
+        [Header(Tessellation)]
+        _TessellationUniform ("Tessellation Uniform", Range(1, 64)) = 1
+        _TessellationEdgeLength ("Tessellation Edge Length", Range(5, 100)) = 50
+        [Toggle(_TESSELLATION_EDGE)]_TESSELLATION_EDGE ("Tessellation Edge", float) = 0
+
         [Enum(UnityEngine.Rendering.CullMode)]_Cull ("Cull", Float) = 1
     }
 
@@ -30,12 +35,16 @@ Shader "URP Shader/Gerstner Waves" {
         Tags { "RenderPipeline" = "UniversalPipeline" }
 
         Pass {
+            //Blend SrcAlpha OneMinusSrcAlpha
             Cull[_Cull]
 
             HLSLPROGRAM
 
-            #pragma vertex Vertex
+            #pragma vertex  TessellationVertexProgram
             #pragma fragment Fragment
+            #pragma hull  HullProgram
+            #pragma domain  DomainProgram
+            #pragma shader_feature _TESSELLATION_EDGE
 
             #pragma multi_compile  _ _MAIN_LIGHT_SHADOWS _MAIN_LIGHT_SHADOWS_CASCADE
             #pragma multi_compile  _SHADOWS_SOFT
@@ -67,22 +76,10 @@ Shader "URP Shader/Gerstner Waves" {
             float4 _BaseMap_ST;
             half4 _BaseColor;
 
-            float _Smoothness;
-            float _Metallic;
+            float _Smoothness, _Metallic;
 
             float _WaveSpeed;
-            float4 _Wave1;
-            float4 _Wave2;
-            float4 _Wave3;
-            float4 _Wave4;
-            float4 _Wave5;
-            float4 _Wave6;
-            float4 _Wave7;
-            float4 _Wave8;
-            float4 _Wave9;
-            float4 _Wave10;
-            float4 _Wave11;
-            float4 _Wave12;
+            float4 _Wave1, _Wave2, _Wave3, _Wave4, _Wave5, _Wave6, _Wave7, _Wave8, _Wave9, _Wave10, _Wave11, _Wave12;
             CBUFFER_END
 
             float3 GerstnerWave(float4 wave, float3 p, inout float3 tangent, inout float3 binormal) {
@@ -167,6 +164,8 @@ Shader "URP Shader/Gerstner Waves" {
                 surfaceData.occlusion = 1;
                 surfaceData.alpha = albedo.a * _BaseColor.a;
             }
+
+            #include "Tessellation.hlsl"
 
             half4 Fragment(Varyings input) : SV_Target {
                 InputData inputData;
