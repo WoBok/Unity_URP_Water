@@ -24,11 +24,18 @@ Shader "URP Shader/Water" {
         _Wave11 ("Wave 11 Wavelength, Steepness, Direction", Vector) = (10, 0.15, 1, 1)
         _Wave12 ("Wave 12 Wavelength, Steepness, Direction", Vector) = (10, 0.15, 1, 1)
 
+        [Header(Water)]
+        [Space(5)]
+        _ShallowCollor ("Shallow Color", Color) = (1, 1, 1, 1)
+        _DeepColor ("Deep Color", Color) = (1, 1, 1, 1)
+        _DepthRange ("Depth Range", Float) = 1
+        _TransDepthRange("Trans Depth Range",Float) = 1
+
         [Header(Tessellation)]
         [Space(5)]
         _TessellationUniform ("Tessellation Uniform", Range(1, 64)) = 1
         _TessellationEdgeLength ("Tessellation Edge Length", Range(5, 100)) = 50
-        [Toggle(_TESSELLATION_EDGE)]_TESSELLATION_EDGE ("Tessellation Edge", float) = 0
+        [Toggle]_Tessellation_Edge ("Tessellation Edge", float) = 1
 
         [Enum(UnityEngine.Rendering.CullMode)]_Cull ("Cull", Float) = 1
     }
@@ -48,7 +55,7 @@ Shader "URP Shader/Water" {
             #pragma hull  HullProgram
             #pragma domain  DomainProgram
 
-            #pragma shader_feature _TESSELLATION_EDGE
+            #pragma shader_feature _TESSELLATION_EDGE_ON
 
             #pragma multi_compile  _ _MAIN_LIGHT_SHADOWS _MAIN_LIGHT_SHADOWS_CASCADE
             #pragma multi_compile  _SHADOWS_SOFT

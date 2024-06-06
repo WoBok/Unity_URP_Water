@@ -20,7 +20,9 @@ void InitializeSurfaceData(Varyings input, out SurfaceData surfaceData) {
     surfaceData.occlusion = 1;
     surfaceData.alpha = albedo.a * _BaseColor.a;
 
-    //surfaceData.albedo = ColorBelowWater(input.screenPos);
+    half4 waterColor = ColorBelowWater(input.screenPos);
+    surfaceData.albedo = waterColor.rgb;
+    surfaceData.alpha = waterColor.a*_BaseColor.a;
 }
 
 half4 Surface(Varyings input) {

@@ -24,7 +24,7 @@ TessellationControlPoint TessellationVertexProgram(Attributes v) {
 }
 
 float TessellationEdgeFactor(float3 p0, float3 p1) {
-    #if defined(_TESSELLATION_EDGE)
+    #if defined(_TESSELLATION_EDGE_ON)
         float edgeLength = distance(p0, p1);
 
         float3 edgeCenter = (p0 + p1) * 0.5;

@@ -7,14 +7,12 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Gerstner Waves
-  m_Shader: {fileID: 4800000, guid: 2a19c65bd978b7445b99e502e7cb806b, type: 3}
+  m_Name: ZhiHuURPWater
+  m_Shader: {fileID: 4800000, guid: 877327110a125624c90e49d56dc5c046, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
-  m_ValidKeywords:
-  - _TESSELLATION_EDGE_ON
-  m_InvalidKeywords:
-  - _TESSELLATION_EDGE
+  m_ValidKeywords: []
+  m_InvalidKeywords: []
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
@@ -30,6 +28,10 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _BumpMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _CubeMap:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
@@ -57,6 +59,14 @@ Material:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    - _NoiseTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _NormalMap:
+        m_Texture: {fileID: 2800000, guid: ca2018cce4b3041ca94fe509b701bce5, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _OcclusionMap:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
@@ -67,6 +77,10 @@ Material:
         m_Offset: {x: 0, y: 0}
     - _SpecGlossMap:
         m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _WaveTex:
+        m_Texture: {fileID: 2800000, guid: 2bb5e7940d64e4510b915a23c753a3f3, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - unity_Lightmaps:
@@ -85,70 +99,62 @@ Material:
     m_Floats:
     - _AlphaClip: 0
     - _AlphaToMask: 0
-    - _Amplitude: 1
+    - _Amount: 100
     - _Blend: 0
     - _BlendModePreserveSpecular: 1
     - _BumpScale: 1
     - _ClearCoatMask: 0
     - _ClearCoatSmoothness: 0
+    - _CubemapMip: 0
     - _Cull: 2
     - _Cutoff: 0.5
-    - _DepthRange: 137.23
+    - _DepthMaxDistance: 1
     - _DetailAlbedoMapScale: 1
     - _DetailNormalMapScale: 1
     - _DstBlend: 0
     - _DstBlendAlpha: 0
     - _EnvironmentReflections: 1
+    - _FoamDistance: 0.4
+    - _FresnelPower: 5
     - _GlossMapScale: 0
     - _Glossiness: 0
     - _GlossyReflections: 0
     - _Metallic: 0
+    - _NoiseRange: 6.43
+    - _NormalIntensity: 0.29
+    - _NormalRefract: 0.133
+    - _NormalScale: 3.73
     - _OcclusionStrength: 1
+    - _Offset: 0.82
     - _Parallax: 0.005
     - _QueueOffset: 0
     - _ReceiveShadows: 1
-    - _Smoothness: 0.783
+    - _Smoothness: 0.5
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
-    - _Speed: 1
     - _SrcBlend: 1
     - _SrcBlendAlpha: 1
-    - _Steepness: 0.61
     - _Surface: 0
-    - _TESSELLATION_EDGE: 1
-    - _TessellationEdgeLength: 7
-    - _TessellationUniform: 1
-    - _Tessellation_Edge: 1
-    - _TransDepthRange: 137.23
-    - _WaveSpeed: 0.2
-    - _Wavelength: 10
+    - _SurfaceNoiseCutoff: 0.777
+    - _WaterSpeed: 0.74
+    - _WaveDelta: 2.43
+    - _WaveRange: 0.3
+    - _WaveSpeed: -12.64
+    - _WaveXSpeed: 0.304
+    - _WaveYSpeed: 0.334
     - _WorkflowMode: 1
     - _ZWrite: 1
     m_Colors:
-    - _BaseColor: {r: 0, g: 0.6866956, b: 1, a: 0.9137255}
+    - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
-    - _DeepColor: {r: 0.07725169, g: 0.35575253, b: 0.5283019, a: 1}
-    - _Direction: {r: 1, g: 1, b: -1, a: 0}
+    - _DepthGradientDeep: {r: 0.08599999, g: 0.40699998, b: 1, a: 0.749}
+    - _DepthGradientShallow: {r: 0.32499996, g: 0.807, b: 0.971, a: 0.725}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
-    - _ShallowCollor: {r: 0, g: 0.764151, b: 0.6821235, a: 1}
+    - _Range: {r: 0.13, g: 1.53, b: 0.37, a: 0.78}
     - _SpecColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}
-    - _Wave1: {r: 1.43, g: 0.35, b: -1, a: 0}
-    - _Wave10: {r: 0.5, g: 0.3, b: 0.2, a: 0.4}
-    - _Wave11: {r: 4, g: 0.4, b: 2, a: 3}
-    - _Wave12: {r: 7, g: 0.1, b: 0.4, a: -0.6}
-    - _Wave2: {r: 0.21, g: 0.5, b: -0.3, a: 0.2}
-    - _Wave3: {r: 2.5, g: 0.1, b: 0.2, a: -1}
-    - _Wave4: {r: 0.29, g: 0.18, b: -0.5, a: -0.1}
-    - _Wave5: {r: 1.5, g: 0.15, b: -2.03, a: -15}
-    - _Wave6: {r: 0.3, g: 0.25, b: 1, a: -7}
-    - _Wave7: {r: 0.2, g: 0.2, b: -0.2, a: -0.4}
-    - _Wave8: {r: 0.4, g: 0.16, b: -2, a: 5}
-    - _Wave9: {r: 0.6, g: 0.2, b: 3, a: -5}
-    - _WaveA: {r: 20.68, g: 0.26, b: 2.37, a: 2.4}
-    - _WaveB: {r: 31.73, g: 0.54, b: 1.06, a: -0.98}
-    - _WaveC: {r: 21.35, g: 0.34, b: 13.02, a: 0.96}
+    - _color: {r: 0.32499996, g: 0.807, b: 0.971, a: 0.725}
   m_BuildTextureStacks: []
---- !u!114 &8871201559771399303
+--- !u!114 &2933097293892650737
 MonoBehaviour:
   m_ObjectHideFlags: 11
   m_CorrespondingSourceObject: {fileID: 0}
