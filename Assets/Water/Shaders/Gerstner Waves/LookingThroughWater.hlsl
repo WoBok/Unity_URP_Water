@@ -6,8 +6,9 @@
 
 //TEXTURE2D(_CameraDepthTexture);
 //SAMPLER(sampler_CameraDepthTexture);
-sampler2D _CameraDepthTexture;
+//sampler2D _CameraDepthTexture;
 //float4 _CameraDepthTexture_TexelSize;
+sampler2D _WaterDepthTexture;
 
 half3 _ShallowCollor;
 half3 _DeepColor;
@@ -28,7 +29,7 @@ half4 ColorBelowWater(float4 screenPos) {
     //float surfaceDepth = UNITY_Z_0_FAR_FROM_CLIPSPACE(screenPos.z);
     //float depthDifference = backgroundDepth - surfaceDepth;
 
-    float backgroundDepth = LinearEyeDepth(tex2Dproj(_CameraDepthTexture, screenPos), _ZBufferParams);
+    float backgroundDepth = LinearEyeDepth(tex2Dproj(_WaterDepthTexture, screenPos), _ZBufferParams);
     float depthDifference = backgroundDepth - screenPos.z;
 
     //float depth = LinearEyeDepth(SampleSceneDepth(uv), _ZBufferParams);
